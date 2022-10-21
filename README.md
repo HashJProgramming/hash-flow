@@ -45,13 +45,18 @@ Note Hashflow must have access to settings.json and database configuration while
 
     authenticate();
 authenticate(); - check if the user is sign-in and prevent them to resign-in
+
     authenticator();
 authenticator(); - true or false check if the user is sign-in
+
     sign_in_form();
 sign_in_form(); - generate a simple sign in form
+
     style_css();
 style_css(); - add all css file needed for the site
+
     product_list();
 product_list(); - generate a list of products
+
     product();
 product(); - show product details
