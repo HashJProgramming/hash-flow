@@ -77,31 +77,31 @@ function product_list(){
     $result = $conn->query($sql);
 
     echo '  <div class="p-5">
-  <div class="reflow-product-list ref-cards">
-    <div class="ref-products">';
+  <div class="hashflow-product-list hash-cards">
+    <div class="hash-products">';
 
 //        display products
     if (mysqli_num_rows($result)> 0) {
         while ($row = $result-> fetch_assoc()) {
-            printf('<a class="ref-product" href="%s?product=%s&hash='.hash('sha512',$row['product_id']).'">',
+            printf('<a class="hash-product" href="%s?product=%s&hash='.hash('sha512',$row['product_id']).'">',
                 settings('shop-settings','product_link'),base64_encode(base64_encode($row['product_id'])));
             printf('
-            <div class="ref-media">
-                <img class="ref-image"
-                <img class="ref-image"
+            <div class="hash-media">
+                <img class="hash-image"
+                <img class="hash-image"
                   src="https://cdn.reflowhq.com/media/627668095/888175706/62a5cceb5e695082689cef77f4fa5747_md.jpg"
                   loading="lazy"/>
               </div>
               
-              <div class="ref-product-data">
-                <div class="ref-product-info">
-                  <h5 class="ref-name">%s</h5>
-                  <p class="ref-excerpt">%s</p>
+              <div class="hash-product-data">
+                <div class="hash-product-info">
+                  <h5 class="hash-name">%s</h5>
+                  <p class="hash-excerpt">%s</p>
                 </div>
-                <strong class="ref-price">
+                <strong class="hash-price">
                 ₱%s</strong>
               </div>
-              <div class="ref-addons"></div
+              <div class="hash-addons"></div
             ></a>
             ', $row['product_name'], $row['product_descriptions'], $row['product_price']);
         }
@@ -109,12 +109,12 @@ function product_list(){
 
     echo '
     </div>
-    <div class="ref-product-preview">
-      <div class="ref-product-preview-header">
-        <div class="ref-title"></div>
-        <div class="ref-close-button">×</div>
+    <div class="hash-product-preview">
+      <div class="hash-product-preview-header">
+        <div class="hash-title"></div>
+        <div class="hash-close-button">×</div>
       </div>
-      <div class="ref-product-preview-content"></div>
+      <div class="hash-product-preview-content"></div>
     </div>
   </div>
 </div>';
@@ -130,35 +130,35 @@ function product($product_id, $hash){
             while ($row = $result-> fetch_assoc()) {
                 printf('
             <div class="p-5">
-              <div class="reflow-product">
-                <div class="ref-media">
-                  <div class="ref-preview">
+              <div class="hashflow-product">
+                <div class="hash-media">
+                  <div class="hash-preview">
                     <img
-                      class="ref-image active"
+                      class="hash-image active"
                       src="https://cdn.reflowhq.com/media/627668095/888175706/62a5cceb5e695082689cef77f4fa5747_md.jpg"
-                      data-reflow-preview-type="image"
+                      data-hashflow-preview-type="image"
                     />
                   </div>
                 
                 </div>
-                <div class="ref-product-data">
-                  <h2 class="ref-name">%s</h2>
-                  <div class="ref-categories">
-                    <span class="ref-category">%s</span>
+                <div class="hash-product-data">
+                  <h2 class="hash-name">%s</h2>
+                  <div class="hash-categories">
+                    <span class="hash-category">%s</span>
                   </div>
-                  <strong class="ref-price">₱%s</strong>
-                  <span class="ref-qty-available">%s left in stock</span>
+                  <strong class="hash-price">₱%s</strong>
+                  <span class="hash-qty-available">%s left in stock</span>
                   <span>
-                    <div class="reflow-add-to-cart ref-product-controls">
+                    <div class="hashflow-add-to-cart hash-product-controls">
                       <span>
-                        <div class="ref-quantity-widget">
-                          <div class="ref-decrease"><span></span></div>
+                        <div class="hash-quantity-widget">
+                          <div class="hash-decrease"><span></span></div>
                           <input type="text" value="1" />
-                          <div class="ref-increase"><span></span></div>
+                          <div class="hash-increase"><span></span></div>
                         </div> </span
-                      ><a href="#" class="ref-button">Add to Cart</a>
+                      ><a href="#" class="hash-button">Add to Cart</a>
                     </div></span>
-                  <div class="ref-description"><p>%s</p></div>
+                  <div class="hash-description"><p>%s</p></div>
                 </div>
               </div>
             </div>
