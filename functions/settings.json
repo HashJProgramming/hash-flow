@@ -1,0 +1,36 @@
+{
+
+  "shop-settings" : {
+    "name": "My Store",
+    "currency": "USD",
+    "address": "123 Main Street",
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "212-555-1212",
+    "email": "email@email.com",
+    "product_link" : "product.php",
+    "shopping_cart_link" : "shopping-cart.php",
+    "order_status" : "orders-status.php"
+  },
+
+  "style-config" : {
+    "css" : [
+      "assets/css/hash-flow_v2.css",
+      "assets/css/sign-in.css"
+    ]
+  },
+
+  "site-config" : {
+    "sign-in-failed" : "sign-in.php",
+    "sign-in-success" : "index.php"
+  },
+
+  "database" : {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "my_shop"
+  }
+
+}
