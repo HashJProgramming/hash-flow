@@ -64,8 +64,17 @@ function settings($data, $value){
 }
 
 function style_css(){
-    foreach (settings('style-config','css') as $css) {
+    foreach (settings('site-config','css') as $css) {
         echo '<link href="'.$css.'" rel="stylesheet">';
+    }
+    foreach (settings('site-config','head') as $head) {
+        echo $head;
+    }
+}
+
+function script_js(){
+    foreach (settings('site-config','js') as $js) {
+        echo $js;
     }
 }
 
@@ -84,13 +93,12 @@ function product_list(){
     if (mysqli_num_rows($result)> 0) {
         while ($row = $result-> fetch_assoc()) {
             printf('<a class="hash-product" href="%s?product=%s&hash='.hash('sha512',$row['product_id']).'">',
-                settings('shop-settings','product_link'),base64_encode(base64_encode($row['product_id'])));
+                settings('site-config','product_link'),base64_encode(base64_encode($row['product_id'])));
             printf('
             <div class="hash-media">
                 <img class="hash-image"
-                <img class="hash-image"
                   src="https://cdn.reflowhq.com/media/627668095/888175706/62a5cceb5e695082689cef77f4fa5747_md.jpg"
-                  loading="lazy"/>
+                  loading="lazy" alt=""/>
               </div>
               
               <div class="hash-product-data">
@@ -99,11 +107,11 @@ function product_list(){
                   <p class="hash-excerpt">%s</p>
                 </div>
                 <strong class="hash-price">
-                ₱%s</strong>
+                %s%s</strong>
               </div>
               <div class="hash-addons"></div
             ></a>
-            ', $row['product_name'], $row['product_descriptions'], $row['product_price']);
+            ', $row['product_name'], $row['product_descriptions'], settings('shop-settings', 'currency-sign'),$row['product_price']);
         }
     }
 
@@ -137,7 +145,7 @@ function product($product_id, $hash){
                       class="hash-image active"
                       src="https://cdn.reflowhq.com/media/627668095/888175706/62a5cceb5e695082689cef77f4fa5747_md.jpg"
                       data-hashflow-preview-type="image"
-                    />
+                     alt=""/>
                   </div>
                 
                 </div>
@@ -146,15 +154,15 @@ function product($product_id, $hash){
                   <div class="hash-categories">
                     <span class="hash-category">%s</span>
                   </div>
-                  <strong class="hash-price">₱%s</strong>
+                  <strong class="hash-price">%s%s</strong>
                   <span class="hash-qty-available">%s left in stock</span>
                   <span>
                     <div class="hashflow-add-to-cart hash-product-controls">
                       <span>
                         <div class="hash-quantity-widget">
-                          <div class="hash-decrease"><span></span></div>
-                          <input type="text" value="1" />
-                          <div class="hash-increase"><span></span></div>
+                          <div class="hash-decrease"><a type="button" data-type="minus" data-field=""><span></span></a></div>
+                          <input type="text" id="quantity" name="quantity" value="1" min="1" max="99999999"/>
+                          <div class="hash-increase"><a type="button" data-type="plus" data-field=""><span></span></a></div>
                         </div> </span
                       ><a href="#" class="hash-button">Add to Cart</a>
                     </div></span>
@@ -162,7 +170,7 @@ function product($product_id, $hash){
                 </div>
               </div>
             </div>
-            ', $row['product_name'], $row['product_category'], $row['product_price'], $row['product_quantity'], $row['product_descriptions']);
+            ', $row['product_name'], $row['product_category'], settings('shop-settings', 'currency-sign'), $row['product_price'], $row['product_quantity'], $row['product_descriptions']);
             }
         }
 
@@ -199,5 +207,5 @@ function sign_in_form(){
         </div>
     </div>
     </div>
-    ', settings('shop-settings','name'));
+    ', settings('site-config','name'));
 }

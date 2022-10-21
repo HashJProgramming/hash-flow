@@ -2,28 +2,30 @@
 
   "shop-settings" : {
     "name": "My Store",
-    "currency": "USD",
-    "address": "123 Main Street",
-    "city": "New York",
-    "state": "NY",
-    "zip": "10001",
-    "phone": "212-555-1212",
-    "email": "email@email.com",
-    "product_link" : "product.php",
-    "shopping_cart_link" : "shopping-cart.php",
-    "order_status" : "orders-status.php"
+    "currency-sign": "₱"
   },
 
-  "style-config" : {
-    "css" : [
-      "assets/css/hash-flow_v2.css",
-      "assets/css/sign-in.css"
-    ]
-  },
 
   "site-config" : {
+    "product_link" : "product.php",
+    "shopping_cart_link" : "shopping-cart.php",
+    "order_status" : "orders-status.php",
     "sign-in-failed" : "sign-in.php",
-    "sign-in-success" : "index.php"
+    "sign-in-success" : "index.php",
+    "head" : [
+      "<script src=\"https://code.jquery.com/jquery-3.5.0.js\"></script>"
+    ],
+    "css" : [
+      "assets/css/hash-flow_v2.css",
+      "assets/css/sign-in.css",
+      "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    ],
+    "js" : [
+      "<script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>",
+      "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>",
+      "<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>",
+      "<script> $(document).ready(function(){\n\nvar quantitiy=0;\n   $('.quantity-right-plus').click(function(e){\n        \n        // Stop acting like a button\n        e.preventDefault();\n        // Get the field name\n        var quantity = parseInt($('#quantity').val());\n        \n        // If is not undefined\n            \n            $('#quantity').val(quantity + 1);\n\n          \n            // Increment\n        \n    });\n\n     $('.quantity-left-minus').click(function(e){\n        // Stop acting like a button\n        e.preventDefault();\n        // Get the field name\n        var quantity = parseInt($('#quantity').val());\n        \n        // If is not undefined\n      \n            // Increment\n            if(quantity>0){\n            $('#quantity').val(quantity - 1);\n            }\n    });\n    \n});</script>"
+    ]
   },
 
   "database" : {
