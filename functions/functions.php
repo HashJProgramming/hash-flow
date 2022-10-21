@@ -63,19 +63,23 @@ function settings($data, $value){
     return $json[$data][$value];
 }
 
-function style_css(){
-    foreach (settings('site-config','css') as $css) {
-        echo '<link href="'.$css.'" rel="stylesheet">';
-    }
+function header_html(){
+
     foreach (settings('site-config','head') as $head) {
         echo $head;
     }
+    foreach (settings('site-config','css') as $css) {
+        echo '<link href="'.$css.'" rel="stylesheet">';
+    }
+
 }
 
 function script_js(){
+
     foreach (settings('site-config','js') as $js) {
         echo $js;
     }
+
 }
 
 
